@@ -12,7 +12,6 @@ import pic5 from "../images/62.jpg";
 import pic6 from "../images/63.jpg";
 import pic7 from "../images/61.webp";
 
-
 const AboutUs: React.FC = () => {
   return (
     <>

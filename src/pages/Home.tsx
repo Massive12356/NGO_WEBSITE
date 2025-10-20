@@ -281,7 +281,7 @@ const Home: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
               {[
                 {
-                  stat: "12",
+                  stat: "16",
                   label: "Regions of Ghana Visited",
                 },
                 {
