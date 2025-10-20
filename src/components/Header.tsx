@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sun, Moon, Heart } from 'lucide-react';
+import { Menu, X, Sun, Moon} from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import logo from '../images/logo1.png'
+import { HashLink } from 'react-router-hash-link';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,7 +12,7 @@ const Header: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
 
   const navigationItems = [
-    { name: 'Home', path: '/' },
+    // { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about-us' },
     { name: 'Our Projects', path: '/our-projects' },
     { name: 'Our Impact', path: '/our-impact' },
@@ -59,6 +60,16 @@ const Header: React.FC = () => {
               </Link>
             ))}
           </div>
+
+          <HashLink to={"/get-involved#giving"}>
+            <button
+              className="border-white dark:bg-white dark:text-black dark:hover:text-white bg-[#987543] hover:bg-white text-white  shadow-md hover:from-black hover:to-[#987543] 
+      hover:text-white hover:bg-gradient-to-r hover:shadow-lg py-3 px-6 rounded-lg"
+              aria-label="Contact us about volunteering"
+            >
+              Donate
+            </button>
+          </HashLink>
           {/* Theme Toggle & Mobile Menu Button */}
           <div className="flex items-center space-x-4">
             <button

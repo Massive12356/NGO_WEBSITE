@@ -80,7 +80,7 @@ const Home: React.FC = () => {
                 />
 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-black/85" />
+                <div className="absolute inset-0 bg-black/55" />
 
                 {/* Centered Content */}
                 <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8">

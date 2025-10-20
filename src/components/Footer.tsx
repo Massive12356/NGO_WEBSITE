@@ -1,5 +1,5 @@
 import React from "react";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { Mail, Phone, MapPin, Instagram } from "lucide-react";
 import logo from "../images/logo1.png";
@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
               <img
                 src={logo}
                 alt="Twelve In Twelve LBG Logo"
-                className="w-32 h-auto object-contain" // <-- Increased logo size
+                className="w-32 h-auto object-contain"
               />
             </Link>
             <p className="text-gray-300 mb-4">
@@ -101,12 +101,11 @@ const Footer: React.FC = () => {
               >
                 Partner with Us
               </Link>
-
               <HashLink
                 to="/contact-us#faqs"
                 className="block text-gray-300 hover:text-primary-400 transition-colors"
               >
-                faqs
+                FAQs
               </HashLink>
             </nav>
           </div>
@@ -151,7 +150,8 @@ const Footer: React.FC = () => {
             © 2025 Twelve In Twelve LBG. All rights reserved. | Transforming the
             health of our nation, one citizen at a time.
           </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
+
+          {/* <div className="flex space-x-6 mt-4 md:mt-0">
             <a
               href="#"
               className="text-gray-400 hover:text-primary-400 text-sm transition-colors"
@@ -164,7 +164,22 @@ const Footer: React.FC = () => {
             >
               Terms of Service
             </a>
-          </div>
+          </div> */}
+        </div>
+
+        {/* Developed By Section */}
+        <div className="mt-6 text-center">
+          <p className="text-gray-500 text-sm">
+            Developed by{" "}
+            <a
+              href="https://sukutechnologies.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-400 hover:underline hover:text-primary-300 transition-colors"
+            >
+              Suku Technologies
+            </a>
+          </p>
         </div>
       </div>
     </footer>

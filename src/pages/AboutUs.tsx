@@ -197,14 +197,38 @@ const AboutUs: React.FC = () => {
               </p>
             </div>
 
+            {/* CEO Section */}
+            <div className="flex justify-center mb-12">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="bg-white dark:bg-neutral-900 rounded-2xl p-6 shadow-lg text-center overflow-hidden max-w-sm"
+              >
+                <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-[#987543]/20">
+                  <img
+                    src={ceo}
+                    alt="Dr. Delasy Gbekor - Founder & General Practitioner"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                  Dr. Delasy Gbekor
+                </h3>
+                <div className="text-[#987543] font-medium mb-3">
+                  Founder & General Practitioner
+                </div>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                  Medical doctor with extensive experience in community
+                  healthcare and a passion for addressing healthcare disparities
+                  in underserved communities.
+                </p>
+              </motion.div>
+            </div>
+
+            {/* Other Team Members */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
-                {
-                  name: "Dr. Delasy Gbekor",
-                  role: "Founder & General Practitioner",
-                  bio: "Medical doctor with extensive experience in community healthcare and a passion for addressing healthcare disparities in underserved communities.",
-                  image: ceo,
-                },
                 {
                   name: "Nathaniel Ato Eduah",
                   role: "Chief Finance Officer",
@@ -255,18 +279,16 @@ const AboutUs: React.FC = () => {
                       src={member.image}
                       alt={`${member.name} - ${member.role} at Twelve In Twelve LBG`}
                       className="w-full h-full object-cover"
-                      width="112"
-                      height="112"
                     />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                    {member.name ?? "N/A"}
+                    {member.name}
                   </h3>
                   <div className="text-[#987543] font-medium mb-3">
-                    {member.role ?? "N/A"}
+                    {member.role}
                   </div>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">
-                    {member.bio ?? "N/A"}
+                    {member.bio}
                   </p>
                 </motion.div>
               ))}

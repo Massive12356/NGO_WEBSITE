@@ -4,6 +4,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from './contexts/ThemeContext';
 import Layout from './components/Layout';
 import ScrollToTop from './components/ScrollToTop'
+import ScrollButton from './components/ScrollButton';
 
 // Lazy load pages for better performance
 const Home = React.lazy(() => import('./pages/Home'));
@@ -39,6 +40,7 @@ function App() {
               </Routes>
             </Suspense>
           </Layout>
+          <ScrollButton/>
         </Router>
       </ThemeProvider>
     </HelmetProvider>

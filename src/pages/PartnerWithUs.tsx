@@ -182,6 +182,91 @@ const GetInvolved: React.FC = () => {
         </section>
       </ScrollAnimation>
 
+      {/* Donation Options */}
+      <ScrollAnimation>
+        <section id="giving" className="py-20 bg-gray-50 dark:bg-neutral-900">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl text-[#987543] font-bold  mb-4">
+                Support Our Healthcare Mission
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300">
+                Your contribution directly supports our healthcare programs and
+                creates lasting impact.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                {
+                  title: "One-Time Donation",
+                  amount: "₵100",
+                  impact:
+                    "Provides basic medical supplies for one community clinic",
+                  description:
+                    "Make an immediate impact with a single contribution.",
+                },
+                {
+                  title: "Monthly Support",
+                  amount: "₵50/month",
+                  impact: "Supports ongoing maternal health programs",
+                  description:
+                    "Create sustainable impact with regular contributions.",
+                  popular: true,
+                },
+                {
+                  title: "Major Gift",
+                  amount: "₵1,000+",
+                  impact:
+                    "Funds a complete medical equipment package for a CHPS compound",
+                  description:
+                    "Transform an entire healthcare facility with medical resources.",
+                },
+              ].map((option, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className={`bg-white dark:bg-neutral-800 rounded-2xl p-8 shadow-lg relative ${
+                    option.popular ? "ring-2 ring-[#987543]" : ""
+                  }`}
+                >
+                  {option.popular && (
+                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#987543] text-white text-sm font-medium px-4 py-1 rounded-full">
+                      Most Popular
+                    </div>
+                  )}
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 text-center">
+                    {option.title}
+                  </h3>
+                  <div className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-4 text-center">
+                    {option.amount}
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-300 mb-6 text-center">
+                    {option.impact}
+                  </p>
+                  <p className="text-gray-500 dark:text-gray-400 text-sm mb-6 text-center">
+                    {option.description}
+                  </p>
+                  <div className="w-full flex items-center justify-center">
+                    <PaystackButton
+                      {...componentProps}
+                      className="bg-yellow-900  text-white dark:bg-white dark:text-black shadow-md py-2 px-7 rounded-lg hover:from-black hover:to-[#987543]  dark:hover:text-white hover:bg-gradient-to-r hover:shadow-lg"
+                      amount={
+                        parseInt(option.amount.replace(/[^\d]/g, "")) * 100
+                      } // Extract numbers like 100, 50, 1000
+                      email={email || "supporter@twelveintwelve.org"}
+                      text="Donate Now"
+                    />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </ScrollAnimation>
+
       {/* Why Support Us */}
       <ScrollAnimation>
         <section className="py-20 bg-gray-50 dark:bg-neutral-900">
@@ -309,91 +394,6 @@ const GetInvolved: React.FC = () => {
                   </blockquote>
                   <div className="text-sm text-gray-500 dark:text-gray-400">
                     — {story.author}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </ScrollAnimation>
-
-      {/* Donation Options */}
-      <ScrollAnimation>
-        <section id="giving" className="py-20 bg-gray-50 dark:bg-neutral-900">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl text-[#987543] font-bold  mb-4">
-                Support Our Healthcare Mission
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300">
-                Your contribution directly supports our healthcare programs and
-                creates lasting impact.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                {
-                  title: "One-Time Donation",
-                  amount: "₵100",
-                  impact:
-                    "Provides basic medical supplies for one community clinic",
-                  description:
-                    "Make an immediate impact with a single contribution.",
-                },
-                {
-                  title: "Monthly Support",
-                  amount: "₵50/month",
-                  impact: "Supports ongoing maternal health programs",
-                  description:
-                    "Create sustainable impact with regular contributions.",
-                  popular: true,
-                },
-                {
-                  title: "Major Gift",
-                  amount: "₵1,000+",
-                  impact:
-                    "Funds a complete medical equipment package for a CHPS compound",
-                  description:
-                    "Transform an entire healthcare facility with medical resources.",
-                },
-              ].map((option, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className={`bg-white dark:bg-neutral-800 rounded-2xl p-8 shadow-lg relative ${
-                    option.popular ? "ring-2 ring-[#987543]" : ""
-                  }`}
-                >
-                  {option.popular && (
-                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#987543] text-white text-sm font-medium px-4 py-1 rounded-full">
-                      Most Popular
-                    </div>
-                  )}
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 text-center">
-                    {option.title}
-                  </h3>
-                  <div className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-4 text-center">
-                    {option.amount}
-                  </div>
-                  <p className="text-gray-600 dark:text-gray-300 mb-6 text-center">
-                    {option.impact}
-                  </p>
-                  <p className="text-gray-500 dark:text-gray-400 text-sm mb-6 text-center">
-                    {option.description}
-                  </p>
-                  <div className="w-full flex items-center justify-center">
-                    <PaystackButton
-                      {...componentProps}
-                      className="bg-white  text-black shadow-md py-2 px-7 rounded-lg hover:from-black hover:to-[#987543] hover:text-white hover:bg-gradient-to-r hover:shadow-lg"
-                      amount={
-                        parseInt(option.amount.replace(/[^\d]/g, "")) * 100
-                      } // Extract numbers like 100, 50, 1000
-                      email={email || "supporter@twelveintwelve.org"}
-                      text="Donate Now"
-                    />
                   </div>
                 </motion.div>
               ))}

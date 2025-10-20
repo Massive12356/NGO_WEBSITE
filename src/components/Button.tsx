@@ -40,8 +40,8 @@ export const Button: React.FC<ButtonProps> = ({
   const variantClasses = {
     // Primary buttons now have your gradient hover effect
     primary: `
-      bg-white  text-black shadow-md hover:from-black hover:to-[#987543] 
-      hover:text-white hover:bg-gradient-to-r hover:shadow-lg
+      bg-yellow-900 text-white  shadow-md hover:from-black hover:to-[#987543] 
+      hover:text-white hover:bg-gradient-to-r hover:shadow-lg border-white dark:bg-white dark:text-black dark:hover:text-white hover:bg-white  shadow-md hover:from-black hover:to-[#987543] 
     `,
     secondary:
       "bg-secondary-600 hover:bg-secondary-700 text-white shadow-md hover:shadow-lg",
