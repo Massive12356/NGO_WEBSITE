@@ -63,7 +63,7 @@ const Header: React.FC = () => {
 
           <HashLink to={"/get-involved#giving"}>
             <button
-              className="border-white dark:bg-white dark:text-black dark:hover:text-white bg-[#987543] hover:bg-white text-white  shadow-md hover:from-black hover:to-[#987543] 
+              className="hidden md:block border-white dark:bg-white dark:text-black dark:hover:text-white bg-[#987543] hover:bg-white text-white  shadow-md hover:from-black hover:to-[#987543] 
       hover:text-white hover:bg-gradient-to-r hover:shadow-lg py-3 px-6 rounded-lg"
               aria-label="Contact us about volunteering"
             >
@@ -109,9 +109,9 @@ const Header: React.FC = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden border-t border-gray-200 dark:border-gray-700"
+              className="absolute  right-2 rounded-lg flex flex-col items-center w-[70%] bg-white dark:bg-black p-4 lg:hidden border-t border-gray-200 dark:border-gray-700"
             >
-              <div className="px-2 pt-2 pb-3 space-y-1">
+              <div className="px-2 pt-2 pb-3 space-y-1 ">
                 {navigationItems.map((item) => (
                   <Link
                     key={item.name}
@@ -128,6 +128,19 @@ const Header: React.FC = () => {
                   </Link>
                 ))}
               </div>
+              <HashLink
+                to={"/get-involved#giving"}
+                className="flex w-full items-center justify-center"
+                onClick={()=>setIsMenuOpen(false)}
+              >
+                <button
+                  className="flex md:hidden border-white dark:bg-white dark:text-black dark:hover:text-white bg-[#987543] hover:bg-white text-white  shadow-md hover:from-black hover:to-[#987543] 
+      hover:text-white hover:bg-gradient-to-r hover:shadow-lg py-2 px-10 rounded-lg"
+                  aria-label="Contact us about volunteering"
+                >
+                  Donate
+                </button>
+              </HashLink>
             </motion.div>
           )}
         </AnimatePresence>
