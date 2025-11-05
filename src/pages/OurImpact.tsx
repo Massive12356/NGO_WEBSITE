@@ -7,12 +7,12 @@ import { ScrollAnimation } from "../hooks/useScrollAnimation";
 import screening from "../images/elderlyScreening.jpeg";
 import maternalDonation from "../images/maternalDonation.jpeg";
 import { Link } from "react-router-dom";
-import document1 from '../images/Appreciation .pdf'
-import document2 from '../images/DOC-20240705-WA0064_251027_121401.pdf'
-import document3 from '../images/LETTER OF APPRECIATION.pdf'
-import document4 from '../images/Letter of appreciation (1).pdf'
-import document5 from '../images/Testimonial - 12 in 12 NGO.pdf'
-import document6 from '../images/appreciation.pdf'
+import document1 from "../images/Appreciation .pdf";
+import document2 from "../images/DOC-20240705-WA0064_251027_121401.pdf";
+import document3 from "../images/LETTER OF APPRECIATION.pdf";
+import document4 from "../images/Letter of appreciation (1).pdf";
+import document5 from "../images/Testimonial - 12 in 12 NGO.pdf";
+import document6 from "../images/appreciation.pdf";
 
 const OurImpact: React.FC = () => {
   return (
@@ -203,8 +203,7 @@ const OurImpact: React.FC = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                Letters of{" "}
-                <span className="text-[#987543]">Appreciation</span>
+                Letters of <span className="text-[#987543]">Appreciation</span>
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
                 Recognition and testimonials from our partners and communities.
@@ -214,35 +213,41 @@ const OurImpact: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 {
-                  title: "Ministry of Health Partnership",
-                  description: "Official recognition for collaborative healthcare initiatives",
-                  document: document1
+                  title: "Moshie Zongo Clinic",
+                  description:
+                    "The Moshie Zongo Clinic expressed heartfelt gratitude to Twelve in Twelve LBG for donating medical equipment, essential drugs and toiletries- a contribution that has greatly improved healthcare delivery at the facility",
+                  document: document1,
                 },
                 {
-                  title: "Community Leaders Testimonial",
-                  description: "Heartfelt appreciation from local community representatives",
-                  document: document2
+                  title: "Twifo Hemang District Health Directorate",
+                  description:
+                    "The Twifo Hemang District Health Directorate extended heartfelt thanks to Twelve in Twelve LBG for supporting the Bukuruso CHPS Compound with medical equipment, essential drugs and electrical appliances- contributions that are improving community health outcomes ",
+                  document: document2,
                 },
                 {
-                  title: "Regional Director Appreciation",
-                  description: "Formal acknowledgment of outstanding service delivery",
-                  document: document3
+                  title: "Assin North District Health Directorate",
+                  description:
+                    "The Assin North District Health Directorate expressed sincere gratitude to Twelve in Twelve LBG for the donation of essential medical supplies and equipment including thermometers, weighing scales and other vital items- which are strengthening healthcare delivery both at the district level and withing the Sienchem CHPS Compound",
+                  document: document3,
                 },
                 {
-                  title: "Health Facility Partnership",
-                  description: "Gratitude letter from collaborating medical centers",
-                  document: document4
+                  title: "Krachi East Municipal Health Directorate",
+                  description:
+                    "The Krachi East Municipal Health Directorate together with the staff of Nyuietor CHPS Compound expressed heartfelt appreciation to Twelve in Twelve LBG and the Pentecoast Church, Dambai Branch for the jiont donation of medical equipment. The support is helping to enhance quality and accessible healthcare for residents of Dambai and surrounding communities",
+                  document: document4,
                 },
                 {
-                  title: "Volunteer Program Recognition",
-                  description: "Appreciation for dedicated volunteer contributions",
-                  document: document5
+                  title: "Sefwi Bekwai Health Center",
+                  description:
+                    " The Sefwi Bekwai Health Center extended heartfelt gratitude to the Twelve in Twelve LBG for donating essential medical supplies including thermometers, oximeters and other vital equipment to enhance the quality of healthcare services at the facility",
+                  document: document5,
                 },
                 {
-                  title: "International NGO Partnership",
-                  description: "Testimonial from global health organization partners",
-                  document: document6
-                }
+                  title: "Tenglento CHPS Appreciation",
+                  description:
+                    "Tenglento CHPS expressed deep appreciation to Twelve in Twelve LBG for their generous donation of medical supplies, which has helped save lives and improve service delivery in the facility. The team acknowledged that the support has greatly enhanced their ability to provide quality healthcare to the people of Tenglento and its surrounding communities.",
+                  document: document6,
+                },
               ].map((letter, index) => (
                 <motion.div
                   key={index}
