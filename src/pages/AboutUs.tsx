@@ -254,7 +254,7 @@ const AboutUs: React.FC = () => {
                 },
                 {
                   name: "Prince Kwame Adiyiah",
-                  role: "Media Team",
+                  role: "Media Personnel",
                   bio: "A creative visual storyteller passionate about digital media production. He specializes in capturing compelling visuals that highlight the impact of the organization’s work.",
                   image: pic4,
                 },

@@ -14,6 +14,7 @@ interface ButtonProps {
   disabled?: boolean;
   "aria-label"?: string;
   className?: string;
+  target?: string
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -28,6 +29,7 @@ export const Button: React.FC<ButtonProps> = ({
   disabled = false,
   "aria-label": ariaLabel,
   className = "",
+  target = '_blank'
 }) => {
   const baseClasses = `
     inline-flex items-center justify-center font-medium rounded-lg
@@ -77,6 +79,8 @@ export const Button: React.FC<ButtonProps> = ({
     return (
       <motion.a
         href={href}
+        target={target}
+        rel={target === '_blank' ? 'noopener noreferrer' : undefined}
         className={classes}
         aria-label={ariaLabel}
         {...motionProps}
@@ -94,6 +98,7 @@ export const Button: React.FC<ButtonProps> = ({
       className={classes}
       aria-label={ariaLabel}
       {...motionProps}
+      formTarget="_blank"
     >
       {buttonContent}
     </motion.button>

@@ -1,74 +1,100 @@
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
-import { motion } from 'framer-motion';
-import { Heart, Users, Baby, TestTube, Brain, Calendar, MapPin } from 'lucide-react';
-import { ScrollAnimation } from '../hooks/useScrollAnimation';
-import maternalDonation from '../images/maternalDonation.jpeg'
-import laborDonation from '../images/LaborDonation.jpeg'
-import anemiaDonation from '../images/AnemiaDonation.jpeg'
-import diseaseSupport from '../images/diseaseSupport.jpeg'
-import elderlyScreening from '../images/elderlyScreening.jpeg'
-import mentalHealthCampaign from '../images/MentalHealthCampaign.jpeg'
-import sickleCellScreening from '../images/sickleCellScreening.jpeg'
+import React from "react";
+import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
+import {
+  Heart,
+  Users,
+  Baby,
+  TestTube,
+  Brain,
+  Calendar,
+  MapPin,
+} from "lucide-react";
+import { ScrollAnimation } from "../hooks/useScrollAnimation";
+import maternalDonation from "../images/maternalDonation.jpeg";
+import reproHealth from "../images/24.jpeg";
+import anemiaDonation from "../images/AnemiaDonation.jpeg";
+import diseaseSupport from "../images/diseaseSupport.jpeg";
+import elderlyScreening from "../images/elderlyScreening.jpeg";
 
+import anaeProgram from "../images/32.jpeg";
+import orphaDonation from "../images/hero1.webp";
+import northDonation from "../images/30.jpeg";
+import orphaDonation1 from "../images/35.jpeg";
 
 const OurProjects: React.FC = () => {
   const completedProjects = [
     {
       icon: Baby,
-      title: "Maternal Health Equipment Donation",
+      title: "Maternal & Child Health Support Initiative",
       description:
-        "Donation of fetal Dopplers (devices for checking the heartbeat of babies) during antenatal visits for pregnant women.",
-      regions: "Central, Eastern, Oti, Northern, and Upper East regions",
+        "We visited the CHPS compound in Womenu, Adaklu, to donate vital medical equipment and supplies aimed at enhancing maternal and child healthcare services. This initiative reflects our dedication to supporting safe childbirth, improving neonatal care, and strengthening community health systems in the Volta Region.",
+      regions: "Volta Region",
       image: maternalDonation,
     },
     {
       icon: Users,
-      title: "Elderly Medical Screening",
+      title: "Elderly Medical Outreach & Wellness Screening",
       description:
-        "Medical screening for the elderly in the alleged witch camp in Gambaga.",
+        "Our team visited the alleged 'witch camp' in Gambaga, Northern Region, where elderly women reside in isolation due to cultural stigmas. We organized a full-scale medical screening that addressed various eye and ear conditions, conducted a deworming exercise, and treated cases of typhoid and malaria. Beyond healthcare services, we also distributed clothing to support the physical and emotional well-being of the residents.",
       regions: "Northern Region",
       image: elderlyScreening,
     },
     {
       icon: TestTube,
-      title: "Anemia Prevention Program",
+      title: "Dambai Health Center Donation",
       description:
-        "Donation of hemoglobin meters (for checking blood levels) and nutritional counseling for pregnant women at risk of iron deficiency anemia.",
-      regions: "Multiple regions",
+        "A charitable initiative at Dambai Health Centre in the Oti Region, where we provided essential medical supplies aimed at combating typhoid and malaria. The donation also included vital resources to support maternal and child healthcare, reinforcing our commitment to improving community well-being.",
+      regions: "Oti Region",
       image: anemiaDonation,
     },
     {
       icon: Baby,
-      title: "Labor Ward Support",
+      title: "Ningo Orphanage Christmas Charity Event",
       description:
-        "Donation of essential equipment and materials for use in labor wards in the maternity section of CHPS compounds.",
-      regions: "Various regions",
-      image: laborDonation,
+        "We visited an orphanage in Ningo, Greater Accra, to host a heartwarming Christmas celebration for the children. The event featured gift donations, fun activities, and a festive party to bring joy and create lasting memories during the holiday season.",
+      regions: "Greater Accra",
+      image: orphaDonation1,
     },
     {
       icon: TestTube,
-      title: "Free Sickle Cell Screening",
+      title: "Tolon District Medical Aid",
       description:
-        "Partnership with TBL Kids Ministries to conduct annual free sickle cell screenings in orphanages.",
-      regions: "Greater Accra region",
-      image: sickleCellScreening,
+        "As part of our commitment to improving community healthcare, we donated essential medical equipment to a CHPS compound in the Tolon District of the Northern Region.",
+      regions: "Northern Region",
+      image: northDonation,
     },
     {
       icon: TestTube,
-      title: "Disease Treatment Support",
+      title: "Community Disease Prevention & Treatment Support",
       description:
-        "Donation of test kits and medication for treatment of conditions such as malaria and typhoid fever.",
-      regions: "Multiple regions",
+        "In collaboration with the TBL Kids Ministry in Otsenkorang, we organized a comprehensive health outreach program focused on screening and treating malaria, typhoid, and malnutrition. The initiative aimed to raise health awareness, provide early diagnosis, and support vulnerable children and families in the Central Region.",
+      regions: "Central Region",
       image: diseaseSupport,
     },
     {
       icon: Brain,
-      title: "Mental Health Campaign",
+      title: "Reproductive Health Education Campaign",
       description:
-        "Campaign to tackle mental health disorders such as depression, anxiety, and substance use disorder.",
-      regions: "Nationwide",
-      image: mentalHealthCampaign,
+        "We conducted an educational outreach in Ostenkorang, Central Region, centered on raising awareness about reproductive health. The campaign featured interactive sessions and expert-led discussions aimed at equipping participants with essential knowledge on sexual health, hygiene, and preventive care.",
+      regions: "Central Region",
+      image: reproHealth,
+    },
+    {
+      icon: Brain,
+      title: "Orphanage Donation",
+      description:
+        "A heartfelt outreach program at Angels of Hope Orphanage, where we provided essential provisions, food supplies, and hygiene products to support the well-being and growth of the children. Our aim was to offer hope, care, and a sense of belonging to the young ones who need it most.",
+      regions: "Western Region",
+      image: orphaDonation,
+    },
+    {
+      icon: Brain,
+      title: "Iron Deficiency & Nutrition Education Program",
+      description:
+        "We held an educational session at the CHPS compound in the Tolon District, Northern Region, focused on creating awareness around iron deficiency anemia. The program provided practical nutrition recommendations, guidance on dietary sources of iron, and tips for preventing anemia, especially among vulnerable groups such as children and pregnant women.",
+      regions: "Northern Region",
+      image: anaeProgram,
     },
   ];
 

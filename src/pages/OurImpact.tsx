@@ -7,6 +7,12 @@ import { ScrollAnimation } from "../hooks/useScrollAnimation";
 import screening from "../images/elderlyScreening.jpeg";
 import maternalDonation from "../images/maternalDonation.jpeg";
 import { Link } from "react-router-dom";
+import document1 from '../images/Appreciation .pdf'
+import document2 from '../images/DOC-20240705-WA0064_251027_121401.pdf'
+import document3 from '../images/LETTER OF APPRECIATION.pdf'
+import document4 from '../images/Letter of appreciation (1).pdf'
+import document5 from '../images/Testimonial - 12 in 12 NGO.pdf'
+import document6 from '../images/appreciation.pdf'
 
 const OurImpact: React.FC = () => {
   return (
@@ -184,6 +190,87 @@ const OurImpact: React.FC = () => {
                       ))}
                     </div>
                   </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </ScrollAnimation>
+
+      {/* Letters of Appreciation */}
+      <ScrollAnimation>
+        <section className="py-20 bg-gray-50 dark:bg-neutral-900">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                Letters of{" "}
+                <span className="text-[#987543]">Appreciation</span>
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300">
+                Recognition and testimonials from our partners and communities.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                {
+                  title: "Ministry of Health Partnership",
+                  description: "Official recognition for collaborative healthcare initiatives",
+                  document: document1
+                },
+                {
+                  title: "Community Leaders Testimonial",
+                  description: "Heartfelt appreciation from local community representatives",
+                  document: document2
+                },
+                {
+                  title: "Regional Director Appreciation",
+                  description: "Formal acknowledgment of outstanding service delivery",
+                  document: document3
+                },
+                {
+                  title: "Health Facility Partnership",
+                  description: "Gratitude letter from collaborating medical centers",
+                  document: document4
+                },
+                {
+                  title: "Volunteer Program Recognition",
+                  description: "Appreciation for dedicated volunteer contributions",
+                  document: document5
+                },
+                {
+                  title: "International NGO Partnership",
+                  description: "Testimonial from global health organization partners",
+                  document: document6
+                }
+              ].map((letter, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ scale: 0.98 }}
+                  className="bg-white dark:bg-neutral-800 rounded-xl p-6 shadow-lg flex flex-col h-full"
+                >
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-[#987543] mb-3">
+                      {letter.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-6">
+                      {letter.description}
+                    </p>
+                  </div>
+                  <Button
+                    variant="outline"
+                    icon={Download}
+                    iconPosition="left"
+                    href={letter.document}
+                    target="_blank"
+                    aria-label={`Download ${letter.title}`}
+                    className="mt-auto"
+                  >
+                    Read Letter
+                  </Button>
                 </motion.div>
               ))}
             </div>
