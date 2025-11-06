@@ -15,6 +15,7 @@ import { PaystackButton } from "react-paystack";
 import toast from "react-hot-toast";
 import proven from "../images/proven.jpeg";
 import { Link } from "react-router-dom";
+import ThankYouModal from "../components/ThankYouModal";
 
 interface PaystackResponse {
   reference: string;
@@ -28,6 +29,8 @@ interface PaystackResponse {
 const GetInvolved: React.FC = () => {
   const [email, setEmail] = useState("");
   const [amount, setAmount] = useState(0);
+  const [showThankYouModal, setShowThankYouModal] = useState(false);
+  const [donationData, setDonationData] = useState<{amount?: number; reference?: string}>({});
 
   // ✅ Correctly declare and read your public key from Vite env
   const publicKey = import.meta.env.VITE_PAYSTACK_PUBLIC_KEY;
@@ -55,7 +58,12 @@ const GetInvolved: React.FC = () => {
         return;
       }
 
-      toast.success(`Thank you for donating! Reference: ${response.reference}`);
+      // Show thank you modal instead of toast
+      setDonationData({
+        amount: amount,
+        reference: response.reference
+      });
+      setShowThankYouModal(true);
       console.log("Payment successful:", response);
     },
     onClose: () => toast("Payment window closed."),
@@ -74,7 +82,12 @@ const GetInvolved: React.FC = () => {
       currency: "GHS",
       callback: (response: any) => {
         console.log("Payment successful", response);
-        toast.success("Thank you for your donation!");
+        // Show thank you modal instead of toast
+        setDonationData({
+          amount: amount,
+          reference: response.reference
+        });
+        setShowThankYouModal(true);
       },
       onClose: () => {
         toast.error("Payment window closed.");
@@ -86,6 +99,12 @@ const GetInvolved: React.FC = () => {
 
   return (
     <>
+      <ThankYouModal 
+        isOpen={showThankYouModal}
+        onClose={() => setShowThankYouModal(false)}
+        donationAmount={donationData.amount}
+        reference={donationData.reference}
+      />
       <Helmet>
         <title>
           Get Involved - Twelve In Twelve LBG | Join Our Healthcare Mission
