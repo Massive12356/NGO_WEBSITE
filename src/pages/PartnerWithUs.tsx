@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import {
@@ -32,10 +32,10 @@ const GetInvolved: React.FC = () => {
   // ✅ Correctly declare and read your public key from Vite env
   const publicKey = import.meta.env.VITE_PAYSTACK_PUBLIC_KEY;
 
-  // ✅ Dynamic Paystack configuration
+
   const componentProps = {
     email,
-    amount: amount * 100, // Paystack expects the smallest currency unit (pesewas)
+    amount: amount * 100,
     metadata: {
       name: "Twelve In Twelve LBG Supporter",
       custom_fields: [
@@ -60,6 +60,30 @@ const GetInvolved: React.FC = () => {
     },
     onClose: () => toast("Payment window closed."),
   };
+
+  const handleCustomDonate = () => {
+    if (!email.trim() || !amount || amount <= 0) {
+      toast.error("Please enter a valid email and donation amount.");
+      return;
+    }
+
+    const handler = (window as any).PaystackPop.setup({
+      key: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY,
+      email,
+      amount: amount * 100, // Paystack works in kobo (GHS * 100)
+      currency: "GHS",
+      callback: (response: any) => {
+        console.log("Payment successful", response);
+        toast.success("Thank you for your donation!");
+      },
+      onClose: () => {
+        toast.error("Payment window closed.");
+      },
+    });
+
+    handler.openIframe(); // Opens the Paystack iframe
+  };
+
   return (
     <>
       <Helmet>
@@ -186,8 +210,9 @@ const GetInvolved: React.FC = () => {
       <ScrollAnimation>
         <section id="giving" className="py-20 bg-gray-50 dark:bg-neutral-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Header */}
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl text-[#987543] font-bold  mb-4">
+              <h2 className="text-3xl md:text-4xl text-[#987543] font-bold mb-4">
                 Support Our Healthcare Mission
               </h2>
               <p className="text-xl text-gray-600 dark:text-gray-300">
@@ -196,31 +221,67 @@ const GetInvolved: React.FC = () => {
               </p>
             </div>
 
+            {/* Custom One-Time Donation Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="bg-white dark:bg-neutral-800 rounded-2xl p-8 shadow-lg mb-12 max-w-lg mx-auto"
+            >
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 text-center">
+                One-Time Donation (Custom Amount)
+              </h3>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Your Email"
+                className="w-full p-3 border rounded-lg mb-4"
+              />
+              <input
+                type="number"
+                value={amount}
+                onChange={(e) => setAmount(Number(e.target.value))}
+                placeholder="Enter Amount (GHS)"
+                className="w-full p-3 border rounded-lg mb-6"
+              />
+              {/* Custom Pay Button */}
+              <button
+                onClick={handleCustomDonate}
+                className="bg-yellow-900 text-white py-3 px-6 rounded-lg w-full hover:opacity-90"
+              >
+                Donate ₵{amount || "Now"}
+              </button>
+            </motion.div>
+
+            {/* Fixed Amount Donation Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 {
-                  title: "One-Time Donation",
+                  title: "₵100 One-Time",
                   amount: "₵100",
                   impact:
-                    "Provides basic medical supplies for one community clinic",
-                  description:
-                    "Make an immediate impact with a single contribution.",
+                    "Provides basic medical supplies to a community clinic",
+                  description: "A simple act of kindness that goes a long way.",
+                  type: "one-time",
                 },
                 {
-                  title: "Monthly Support",
+                  title: "₵50 Monthly Support",
                   amount: "₵50/month",
                   impact: "Supports ongoing maternal health programs",
                   description:
                     "Create sustainable impact with regular contributions.",
+                  type: "monthly",
+                  planCode: "PLN_qqsrbdkas0mzhsp",
                   popular: true,
                 },
                 {
-                  title: "Major Gift",
+                  title: "Major Gift (₵1,000+)",
                   amount: "₵1,000+",
                   impact:
-                    "Funds a complete medical equipment package for a CHPS compound",
-                  description:
-                    "Transform an entire healthcare facility with medical resources.",
+                    "Funds a complete medical package for a rural CHPS compound",
+                  description: "Transform an entire healthcare facility.",
+                  type: "one-time",
                 },
               ].map((option, index) => (
                 <motion.div
@@ -249,15 +310,21 @@ const GetInvolved: React.FC = () => {
                   <p className="text-gray-500 dark:text-gray-400 text-sm mb-6 text-center">
                     {option.description}
                   </p>
+
                   <div className="w-full flex items-center justify-center">
                     <PaystackButton
                       {...componentProps}
-                      className="bg-yellow-900  text-white dark:bg-white dark:text-black shadow-md py-2 px-7 rounded-lg hover:from-black hover:to-[#987543]  dark:hover:text-white hover:bg-gradient-to-r hover:shadow-lg"
+                      className="bg-yellow-900 text-white dark:bg-white dark:text-black shadow-md py-2 px-7 rounded-lg hover:from-black hover:to-[#987543] dark:hover:text-white hover:bg-gradient-to-r hover:shadow-lg"
                       amount={
-                        parseInt(option.amount.replace(/[^\d]/g, "")) * 100
-                      } // Extract numbers like 100, 50, 1000
+                        option.type === "one-time"
+                          ? parseInt(option.amount.replace(/[^\d]/g, "")) * 100
+                          : 0
+                      }
                       email={email || "info@twelveintwelvelbg.org"}
                       text="Donate Now"
+                      {...(option.type === "monthly"
+                        ? { plan: option.planCode, currency: "GHS" }
+                        : {})}
                     />
                   </div>
                 </motion.div>
