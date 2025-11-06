@@ -64,7 +64,7 @@ const GetInvolved: React.FC = () => {
         reference: response.reference
       });
       setShowThankYouModal(true);
-      console.log("Payment successful:", response);
+      // console.log("Payment successful:", response);
     },
     onClose: () => toast("Payment window closed."),
   };
