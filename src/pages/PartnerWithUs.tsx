@@ -256,7 +256,7 @@ const GetInvolved: React.FC = () => {
                       amount={
                         parseInt(option.amount.replace(/[^\d]/g, "")) * 100
                       } // Extract numbers like 100, 50, 1000
-                      email={email || "supporter@twelveintwelve.org"}
+                      email={email || "info@twelveintwelvelbg.org"}
                       text="Donate Now"
                     />
                   </div>
