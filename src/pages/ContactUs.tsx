@@ -37,6 +37,8 @@ const ContactUs: React.FC = () => {
       setLoading(true);
       const payload = {...formData}
 
+      console.log("PAYLOAD TO BACKEND:", payload)
+
       const response = await axios.post(`${BaseUrl}/send-email`, payload);
       console.log("Response From Backend:", response.data)
       toast.success(response.data.message)

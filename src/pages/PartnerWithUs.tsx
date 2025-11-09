@@ -28,17 +28,18 @@ interface PaystackResponse {
 
 const GetInvolved: React.FC = () => {
   const [email, setEmail] = useState("");
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState("");
   const [showThankYouModal, setShowThankYouModal] = useState(false);
   const [donationData, setDonationData] = useState<{amount?: number; reference?: string}>({});
 
   // ✅ Correctly declare and read your public key from Vite env
   const publicKey = import.meta.env.VITE_PAYSTACK_PUBLIC_KEY;
 
+  const numericAmount = Number(amount) || 0;
 
   const componentProps = {
     email,
-    amount: amount * 100,
+    amount: numericAmount * 100,
     metadata: {
       name: "Twelve In Twelve LBG Supporter",
       custom_fields: [
@@ -60,7 +61,7 @@ const GetInvolved: React.FC = () => {
 
       // Show thank you modal instead of toast
       setDonationData({
-        amount: amount,
+        amount: numericAmount,
         reference: response.reference
       });
       setShowThankYouModal(true);
@@ -70,7 +71,7 @@ const GetInvolved: React.FC = () => {
   };
 
   const handleCustomDonate = () => {
-    if (!email.trim() || !amount || amount <= 0) {
+    if (!email.trim() || !amount || numericAmount <= 0) {
       toast.error("Please enter a valid email and donation amount.");
       return;
     }
@@ -78,13 +79,13 @@ const GetInvolved: React.FC = () => {
     const handler = (window as any).PaystackPop.setup({
       key: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY,
       email,
-      amount: amount * 100, // Paystack works in kobo (GHS * 100)
+      amount: numericAmount * 100, // Paystack works in kobo (GHS * 100)
       currency: "GHS",
       callback: (response: any) => {
         console.log("Payment successful", response);
         // Show thank you modal instead of toast
         setDonationData({
-          amount: amount,
+          amount: numericAmount,
           reference: response.reference
         });
         setShowThankYouModal(true);
@@ -255,14 +256,14 @@ const GetInvolved: React.FC = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your Email"
-                className="w-full p-3 border rounded-lg mb-4"
+                className="w-full p-3 border rounded-lg mb-4 text-black"
               />
               <input
                 type="number"
                 value={amount}
-                onChange={(e) => setAmount(Number(e.target.value))}
+                onChange={(e) => setAmount(e.target.value)}
                 placeholder="Enter Amount (GHS)"
-                className="w-full p-3 border rounded-lg mb-6"
+                className="w-full p-3 border rounded-lg mb-6 text-black"
               />
               {/* Custom Pay Button */}
               <button
