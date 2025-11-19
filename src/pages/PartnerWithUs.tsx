@@ -102,7 +102,11 @@ const GetInvolved: React.FC = () => {
     <>
       <ThankYouModal 
         isOpen={showThankYouModal}
-        onClose={() => setShowThankYouModal(false)}
+        onClose={() => {
+          setShowThankYouModal(false);
+          setAmount("");
+          setEmail("");
+        }}
         donationAmount={donationData.amount}
         reference={donationData.reference}
       />
