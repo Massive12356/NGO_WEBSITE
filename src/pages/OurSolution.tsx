@@ -21,6 +21,7 @@ import anaeProgram from "../images/32.jpeg";
 import orphaDonation from "../images/hero1.webp";
 import northDonation from "../images/30.jpeg";
 import orphaDonation1 from "../images/35.jpeg";
+import nasikaImage from "../images/Nasika.jpeg";
 
 const OurProjects: React.FC = () => {
   const completedProjects = [
@@ -214,6 +215,7 @@ const OurProjects: React.FC = () => {
                   description:
                     "Launch of massive campaign against teenage pregnancy and substance use disorder.",
                   icon: Users,
+                  image: nasikaImage,
                 },
               ].map((project, index) => (
                 <motion.div
@@ -223,6 +225,16 @@ const OurProjects: React.FC = () => {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="bg-white dark:bg-neutral-800 rounded-2xl p-6 shadow-lg"
                 >
+                  {/* Added image for Nsakina Outreach */}
+                  {project.image && (
+                    <div className="mb-4 rounded-lg overflow-hidden">
+                      <img 
+                        src={project.image} 
+                        alt={project.title} 
+                        className="w-full h-48 object-cover"
+                      />
+                    </div>
+                  )}
                   <div className="flex items-start space-x-4">
                     <div className="bg-secondary-100 dark:bg-secondary-900 p-3 rounded-xl flex-shrink-0">
                       <project.icon className="w-6 h-6 text-primary-600 dark:text-primary-400" />

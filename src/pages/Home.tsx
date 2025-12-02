@@ -1,15 +1,16 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { motion,AnimatePresence } from 'framer-motion';
-import {  CheckCircle, Users, Heart, Award, MapPin, Calendar } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { CheckCircle, Users, Heart, Award, MapPin, Calendar } from 'lucide-react';
 import { Button } from '../components/Button';
 import { ScrollAnimation } from '../hooks/useScrollAnimation';
 import hero from '../images/hero.webp'
 import hero1 from '../images/hero1.webp'
 import whatWeDo from '../images/whatWeDo.webp'
+import nasikaImage from '../images/Nasika.jpeg';
 import AnimatedCount from '../lib/AnimateCount';
 import { Link } from 'react-router-dom';
-
+import Popup from '../components/Popup';
 
 const slides = [
   {
@@ -36,8 +37,8 @@ const slides = [
 
 
 const Home: React.FC = () => {
-
   const [currentSlide, setCurrentSlide] = React.useState(0);
+  const [showPopup, setShowPopup] = React.useState(true);
 
   // Auto-slide every 8 seconds
   React.useEffect(() => {
@@ -49,6 +50,8 @@ const Home: React.FC = () => {
 
   return (
     <>
+      <Popup isOpen={showPopup} onClose={() => setShowPopup(false)} />
+      
       <Helmet>
         <title>
           Twelve In Twelve LBG - Healthcare for Underserved Communities in Ghana
@@ -369,6 +372,7 @@ const Home: React.FC = () => {
                   title: "Nsakina Outreach",
                   description:
                     "Launch of massive campaign against teenage pregnancy and substance use disorder.",
+                  image: nasikaImage, // Added image for Nsakina Outreach
                 },
               ].map((event, index) => (
                 <motion.div
@@ -378,6 +382,16 @@ const Home: React.FC = () => {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="bg-white dark:bg-neutral-800 rounded-2xl p-6 shadow-lg"
                 >
+                  {/* Added image for Nsakina Outreach */}
+                  {event.image && (
+                    <div className="mb-4 rounded-lg overflow-hidden">
+                      <img 
+                        src={event.image} 
+                        alt={event.title} 
+                        className="w-full h-48 object-cover"
+                      />
+                    </div>
+                  )}
                   <div className="flex items-center text-[#987543] mb-3">
                     <Calendar className="w-5 h-5 mr-2" />
                     <span className="font-medium">{event.date}</span>
