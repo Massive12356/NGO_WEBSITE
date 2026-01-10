@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import nasikaImage from '../images/Nasika.jpeg';
+import nasikaImage from '../images/COMMUNITY OUTREACH!12a.png';
 
 interface PopupProps {
   isOpen: boolean;
@@ -36,19 +36,30 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
     navigate('/get-involved#giving');
     
     // Ensure smooth scrolling to the section after navigation
+    // Using a longer timeout to ensure page is fully loaded
     setTimeout(() => {
       const element = document.getElementById('giving');
       if (element) {
+        // Scroll to the section with smooth behavior
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        
+        // Add a small additional delay to ensure the scroll completes
+        setTimeout(() => {
+          // Optionally, we can focus on the first input field to make it more obvious
+          const firstInput = element.querySelector('input[type="email"]') as HTMLInputElement;
+          if (firstInput) {
+            firstInput.focus();
+          }
+        }, 300);
       }
-    }, 100);
+    }, 300); // Increased timeout to ensure full page load
   };
 
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-70 backdrop-blur-sm">
-      <div 
+      <div
         className="relative bg-white dark:bg-neutral-800 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
@@ -59,29 +70,31 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
         >
           ×
         </button>
-        
+
         <div className="p-6">
           <div className="mb-4">
-            <img 
-              src={nasikaImage} 
-              alt="Nasika Outreach Campaign" 
+            <img
+              src={nasikaImage}
+              alt="Nsakina Outreach Campaign"
               className="w-full h-auto rounded-lg object-cover"
             />
           </div>
-          
+
           <h2 className="text-2xl font-bold text-[#987543] mb-4 text-center">
-            Nasika Outreach Campaign
+          Adidome Maternal Health Outreach
           </h2>
-          
+
           <p className="text-gray-700 dark:text-gray-300 mb-4 text-center">
-            Join us for our upcoming massive campaign against teenage pregnancy and substance use disorder. 
-            This initiative aims to educate, empower, and provide support to young people in our communities.
+          Join us as we visit the Adidome Zongo CHPS Compound in the Volta Region to support maternal healthcare through the donation of essential medical materials and equipment. This initiative is aimed at improving healthcare services for expectant mothers and strengthening community-based maternal care.
+
+Your support through donations will help enhance maternal health outcomes and empower healthcare providers to deliver safer and more effective care for women in the community.
           </p>
-          
+
           <p className="text-gray-700 dark:text-gray-300 mb-6 text-center">
-            Your support through donations will help us reach more young lives with crucial education and resources.
+            Your support through donations will help us reach more young lives
+            with crucial education and resources.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <button
               onClick={handleDonateClick}

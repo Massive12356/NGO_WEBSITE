@@ -8,6 +8,7 @@ import hero from '../images/hero.webp'
 import hero1 from '../images/hero1.webp'
 import whatWeDo from '../images/whatWeDo.webp'
 import nasikaImage from '../images/Nasika.jpeg';
+import donation from '../images/COMMUNITY OUTREACH!12a.png'
 import AnimatedCount from '../lib/AnimateCount';
 import { Link } from 'react-router-dom';
 import Popup from '../components/Popup';
@@ -362,17 +363,11 @@ const Home: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {[
                 {
-                  date: "November 1, 2025",
-                  title: "Ahafo and Bono Regions Visit",
+                  date: "January 31st, 2026",
+                  title: "Adidome Maternal Health Outreach",
                   description:
-                    "Donation of items in support of maternal and child welfare.",
-                },
-                {
-                  date: "December 20, 2025",
-                  title: "Nsakina Outreach",
-                  description:
-                    "Launch of massive campaign against teenage pregnancy and substance use disorder.",
-                  image: nasikaImage, // Added image for Nsakina Outreach
+                    " A Visit to  Adidome Zongo CHPS Compound in the Volta Region to donate essential materials and medical equipment to improve maternal health services in the community.",
+                  image: donation, // Added image for Nsakina Outreach
                 },
               ].map((event, index) => (
                 <motion.div

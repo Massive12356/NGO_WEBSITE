@@ -21,7 +21,7 @@ import anaeProgram from "../images/32.jpeg";
 import orphaDonation from "../images/hero1.webp";
 import northDonation from "../images/30.jpeg";
 import orphaDonation1 from "../images/35.jpeg";
-import nasikaImage from "../images/Nasika.jpeg";
+import nasikaImage from "../images/COMMUNITY OUTREACH!12a.png";
 
 const OurProjects: React.FC = () => {
   const completedProjects = [
@@ -203,17 +203,10 @@ const OurProjects: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {[
                 {
-                  date: "November 1, 2025",
-                  title: "Ahafo and Bono Regions Visit",
+                  date: "January 31st, 2026",
+                  title: "Adidome Maternal Health Outreach",
                   description:
-                    "Donation of items in support of maternal and child welfare.",
-                  icon: Baby,
-                },
-                {
-                  date: "December 20, 2025",
-                  title: "Nsakina Outreach",
-                  description:
-                    "Launch of massive campaign against teenage pregnancy and substance use disorder.",
+                    "A Visit to  Adidome Zongo CHPS Compound in the Volta Region to donate essential materials and medical equipment to improve maternal health services in the community.",
                   icon: Users,
                   image: nasikaImage,
                 },
